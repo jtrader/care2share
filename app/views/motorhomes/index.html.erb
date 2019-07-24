@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Motorhomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @motorhomes.each do |motorhome| %>
+      <tr>
+        <td><%= motorhome.make %></td>
+        <td><%= motorhome.model %></td>
+        <td><%= link_to 'Show', motorhome %></td>
+        <td><%= link_to 'Edit', edit_motorhome_path(motorhome) %></td>
+        <td><%= link_to 'Destroy', motorhome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Motorhome', new_motorhome_path %>

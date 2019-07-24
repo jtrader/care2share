@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @motorhome.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @motorhome.model %>
+</p>
+<p>
+  <strong>Year:</strong>
+  <%= @motorhome.year %>
+</p>
+<p>
+  <strong>Length:</strong>
+  <%= @motorhome.length %>
+</p>
+<p>
+  <strong>Beds:</strong>
+  <%= @motorhome.beds %>
+</p>
+<%= image_tag @motorhome.uploaded_image %>
+
+<%= link_to 'Edit', edit_motorhome_path(@motorhome) %> |
+<%= link_to 'Back', motorhomes_path %>

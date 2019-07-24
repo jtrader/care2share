@@ -1,0 +1,46 @@
+<%= form_with(model: motorhome, local: true) do |form| %>
+  <% if motorhome.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(motorhome.errors.count, "error") %> prohibited this motorhome from being saved:</h2>
+
+      <ul>
+      <% motorhome.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :make %>
+    <%= form.text_field :make %>
+  </div>
+
+  <div class="field">
+    <%= form.label :model %>
+    <%= form.text_field :model %>
+  </div>
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.select :year, options_for_select(1901..Time.now.year), { prompt: "Select Year"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length, 'Length(feet)' %>
+    <%= form.select :length, options_for_select(8..100), { prompt: "Select Length"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beds %>
+    <%= form.select :beds, options_for_select(0...20), {prompt: "Select Beds"} %>
+  </div>
+    <div class="field">
+    <%= form.label :uploaded_image %>
+    <%= form.file_field :uploaded_image %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
