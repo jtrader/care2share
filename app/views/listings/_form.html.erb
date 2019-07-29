@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :date_from %>
-    <%= form.date_select :date_from %>
+    <%= form.date_select :start_time %>
   </div>
 
   <div class="field">
     <%= form.label :date_to %>
-    <%= form.date_select :date_to %>
+    <%= form.date_select :end_time %>
   </div>
 
   <div class="field">
@@ -27,12 +27,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :motorhome_id %>   
+    <%= form.label :motorhome_id %>
     <% motorhomes_array = Motorhome.all.map { |motorhome| [motorhome.make, motorhome.id] } %>
     <%= form.select :motorhome_id, options_for_select(motorhomes_array) %>
   </div>
 
-  <div class="actions"> 
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

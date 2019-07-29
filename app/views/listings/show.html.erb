@@ -2,12 +2,12 @@
 
 <p>
   <strong>Date from:</strong>
-  <%= @listing.date_from %>
+  <%= @listing.start_time %>
 </p>
 
 <p>
   <strong>Date to:</strong>
-  <%= @listing.date_to %>
+  <%= @listing.end_time %>
 </p>
 
 <p>
@@ -32,6 +32,17 @@
   <strong>Motorhome:</strong>
   <%= image_tag @listing.motorhome.uploaded_image %>
 </p>
+<br>
+
+<%= month_calendar events: @listings do |date, listings| %>
+  <%= date %>
+
+  <% listings.each do |listings| %>
+    <div>
+      <%= listings.motorhome.make %>
+    </div>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
