@@ -16,8 +16,8 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.date_from %></td>
-        <td><%= listing.date_to %></td>
+        <td><%= listing.start_time %></td>
+        <td><%= listing.end_time %></td>
         <td><%= listing.price %></td>
         <td><%= listing.motorhome.make %></td>
         <td><%= link_to 'Show', listing %></td>

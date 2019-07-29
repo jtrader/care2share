@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listings = Listing.all
   end
 
   # GET /listings/new
@@ -27,7 +28,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
 
     respond_to do |format|
-      if @listing.save
+      if @listing.save!
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -69,6 +70,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:date_from, :date_to, :price, :motorhome_id)
+      params.require(:listing).permit(:start_time, :end_time, :price, :motorhome_id)
     end
 end
