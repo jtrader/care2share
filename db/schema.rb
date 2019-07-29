@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_002413) do
+ActiveRecord::Schema.define(version: 2019_07_29_021200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2019_07_29_002413) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.date "date_from"
+    t.date "date_to"
+    t.integer "price"
+    t.bigint "motorhome_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["motorhome_id"], name: "index_listings_on_motorhome_id"
   end
 
   create_table "motorhomes", force: :cascade do |t|
@@ -71,5 +81,6 @@ ActiveRecord::Schema.define(version: 2019_07_29_002413) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "listings", "motorhomes"
   add_foreign_key "profiles", "users"
 end
