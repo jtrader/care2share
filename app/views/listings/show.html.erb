@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @listing.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @listing.date_to %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+<p>
+  <strong>Motorhome:</strong>
+  <%= @listing.motorhome %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
