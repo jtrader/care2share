@@ -16,8 +16,21 @@
 </p>
 
 <p>
+  <strong>Make:</strong>
+  <%= @listing.motorhome.make %>
+</p>
+<p>
+  <strong>Model:</strong>
+  <%= @listing.motorhome.model %>
+</p>
+<p>
+  <strong>Year:</strong>
+  <%= @listing.motorhome.year %>
+</p>
+
+<p>
   <strong>Motorhome:</strong>
-  <%= @listing.motorhome %>
+  <%= image_tag @listing.motorhome.uploaded_image %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |

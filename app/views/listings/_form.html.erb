@@ -27,11 +27,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :motorhome_id %>
-    <%= form.text_field :motorhome_id %>
+    <%= form.label :motorhome_id %>   
+    <% motorhomes_array = Motorhome.all.map { |motorhome| [motorhome.make, motorhome.id] } %>
+    <%= form.select :motorhome_id, options_for_select(motorhomes_array) %>
   </div>
 
-  <div class="actions">
+  <div class="actions"> 
     <%= form.submit %>
   </div>
 <% end %>
