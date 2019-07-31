@@ -1,6 +1,6 @@
 class MotorhomesController < ApplicationController
   before_action :set_motorhome, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /motorhomes
   # GET /motorhomes.json
   def index
