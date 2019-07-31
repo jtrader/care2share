@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_053900) do
+ActiveRecord::Schema.define(version: 2019_07_30_064440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,26 @@ ActiveRecord::Schema.define(version: 2019_07_29_053900) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.bigint "writer_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_comments_on_recipient_id"
+    t.index ["writer_id"], name: "index_comments_on_writer_id"
+  end
+
+  create_table "creplies", force: :cascade do |t|
+    t.text "text"
+    t.bigint "writer_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_creplies_on_comment_id"
+    t.index ["writer_id"], name: "index_creplies_on_writer_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.date "start_time"
     t.date "end_time"
@@ -55,6 +75,8 @@ ActiveRecord::Schema.define(version: 2019_07_29_053900) do
     t.integer "length"
     t.integer "beds"
     t.integer "price"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_motorhomes_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -66,6 +88,27 @@ ActiveRecord::Schema.define(version: 2019_07_29_053900) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "text"
+    t.bigint "writer_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "rating"
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["writer_id"], name: "index_reviews_on_writer_id"
+  end
+
+  create_table "rreplies", force: :cascade do |t|
+    t.text "text"
+    t.bigint "writer_id"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_rreplies_on_review_id"
+    t.index ["writer_id"], name: "index_rreplies_on_writer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,6 +124,15 @@ ActiveRecord::Schema.define(version: 2019_07_29_053900) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users", column: "recipient_id"
+  add_foreign_key "comments", "users", column: "writer_id"
+  add_foreign_key "creplies", "comments"
+  add_foreign_key "creplies", "users", column: "writer_id"
   add_foreign_key "listings", "motorhomes"
+  add_foreign_key "motorhomes", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "listings"
+  add_foreign_key "reviews", "users", column: "writer_id"
+  add_foreign_key "rreplies", "reviews"
+  add_foreign_key "rreplies", "users", column: "writer_id"
 end

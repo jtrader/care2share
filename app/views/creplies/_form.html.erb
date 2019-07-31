@@ -1,0 +1,29 @@
+<%= form_with(model: creply, local: true) do |form| %>
+  <% if creply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(creply.errors.count, "error") %> prohibited this creply from being saved:</h2>
+
+      <ul>
+      <% creply.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :writer_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :comment_id, value: comment_id%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :Reply %>
+  </div>
+<% end %>

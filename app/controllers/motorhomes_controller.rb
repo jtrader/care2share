@@ -69,6 +69,6 @@ class MotorhomesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def motorhome_params
-      params.require(:motorhome).permit(:make, :model, :uploaded_image, :length, :beds, :year)
+      params.require(:motorhome).permit(:make, :model, :uploaded_image, :length, :beds, :year, :user_id)
     end
 end

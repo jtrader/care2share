@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @creply.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @creply.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @creply.comment %>
+</p>
+
+<%= link_to 'Edit', edit_creply_path(@creply) %> |
+<%= link_to 'Back', creplies_path %>

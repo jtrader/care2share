@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Owner:</strong>
+  <%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
+</p>
+
+<p>
   <strong>Date from:</strong>
   <%= @listing.start_time %>
 </p>
