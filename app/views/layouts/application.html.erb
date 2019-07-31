@@ -8,26 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-  
-  <a href="/listings">Listings</a> | <a href="/profiles"> Profile </a> | <a href="/motorhomes"> Motorhomes </a>
-  <% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path) %>
-  </li>
-<% end %>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Edit registration', edit_user_registration_path) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Register', new_user_registration_path) %>
-  </li>
-<% end %>
+
+
+<div class="nav-container">
+  <a href="/" class="nav-item"> <img src="/img/practice_logo.png" width="65" height="75"></a>
+  <a href="/" class="nav-item">care2share</a>
+  <a href="/listings" class="nav-item" >Listings</a>
+  <a href="/profiles" class="nav-item" >Profile</a>
+  <a href="/motorhomes" class="nav-item">Motorhomes</a>
+
+
+</div>
+
     <%= yield %>
   </body>
 </html>
