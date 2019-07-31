@@ -1,3 +1,39 @@
+
+<div>
+  <h3>Selection Critiria</h3>
+  <%= form_tag({}, {:method => :get}) do %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date from</th>
+          <th>Date to</th>
+          <th>Max Price</th>
+          <th>Min Beds</th>
+          <th>Min Rating</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= date_field_tag :date_from, "#{params[:date_from]}", :onchange => "this.form.submit();" %>
+          </td>
+          <td>
+            <%= date_field_tag :date_to, "#{params[:date_to]}", :onchange => "this.form.submit();" %>
+          </td>
+          <td>
+            <%= number_field_tag :max_price, "#{params[:max_price]}", :onchange => "this.form.submit();", min: 100, max: 5000, step: 100 %>
+          </td>
+          <td>
+            <%= select_tag :min_beds, options_for_select(0..6, params[:min_beds]), :onchange => "this.form.submit();" %>
+          </td>
+          <td>1<input id="rating" type="range" min="1" max="5">5</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+=======
 <h3>Search</h3>
 <%= form_tag({}, {:method => :get}) do %>
     <table>
