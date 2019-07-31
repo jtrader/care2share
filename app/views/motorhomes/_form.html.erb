@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
     <%= form.label :make %>
     <%= form.text_field :make %>
   </div>
@@ -34,7 +38,7 @@
     <%= form.label :beds %>
     <%= form.select :beds, options_for_select(0...20), {prompt: "Select Beds"} %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= form.label :uploaded_image %>
     <%= form.file_field :uploaded_image %>
   </div>

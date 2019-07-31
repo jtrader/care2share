@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Owner:</strong>
+  <%= link_to @motorhome.user.profile.name, @motorhome.user.profile %>
+</p>
+<p>
   <strong>Make:</strong>
   <%= @motorhome.make %>
 </p>
-
 <p>
   <strong>Model:</strong>
   <%= @motorhome.model %>

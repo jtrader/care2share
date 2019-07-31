@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :rreplies
+  resources :creplies
+  resources :reviews
+  resources :comments
   resources :listings
   resources :profiles
   devise_for :users

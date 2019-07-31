@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :motorhome_id %>
-    <% motorhomes_array = Motorhome.all.map { |motorhome| [motorhome.make, motorhome.id] } %>
+    <% motorhomes_array = Motorhome.where(user_id: current_user.id).map { |motorhome| [motorhome.make, motorhome.id] } %>
     <%= form.select :motorhome_id, options_for_select(motorhomes_array) %>
   </div>
 
