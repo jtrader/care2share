@@ -13,6 +13,7 @@
 
   <tbody>
     <% @motorhomes.each do |motorhome| %>
+      <% if current_user.id == motorhome.user_id %>
       <tr>
         <td><%= motorhome.make %></td>
         <td><%= motorhome.model %></td>
@@ -20,6 +21,7 @@
         <td><%= link_to 'Edit', edit_motorhome_path(motorhome) %></td>
         <td><%= link_to 'Destroy', motorhome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
