@@ -16,10 +16,22 @@
  */
 
 
+ @font-face {
+    font-family: "York";
+    src: url('yorkwhiteletter.ttf') format('truetype');
+  }
+
  body {
      margin: 0px;
      background-color: white;
  }
+
+ h3 {
+    font-family: "York";
+    font-size: 3em;
+    text-align: center;
+    color: blue ;
+}
 
  a {
      text-decoration: none;
