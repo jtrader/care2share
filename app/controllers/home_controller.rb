@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 
-    def index 
+    def index
+        if user_signed_in?
+            @user_motorhomes = Motorhome.where(user: current_user)
+        end
+
         @listing_date_from = Listing.all
         @listing_date_to = Listing.all
         @listing_max_price = Listing.all
