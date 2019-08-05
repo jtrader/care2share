@@ -86,6 +86,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:start_time, :end_time, :price, :motorhome_id)
+      params.require(:listing).permit(:start_time, :end_time, :price, :motorhome_id, :user_id)
     end
 end
