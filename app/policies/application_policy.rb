@@ -10,8 +10,8 @@ class ApplicationPolicy
     false
   end
 
-  def show?
-    false
+  def show
+    @user = authorize User.find(params[:id])
   end
 
   def create?
