@@ -9,23 +9,67 @@
   </head>
   <body>
 
-<div class="nav-container">
+<ul class="nav-container">
+  <li>
+    <h3><a href="/">care2share</a></h3>
+  </li>
+  <li class="menu">
+    <div class="dropdown">
+      <div class="dropbtn"><h4>Hire &#8595</h4></div>
+      <div class="dropdown-content">
+        <a href="#">How To Hire</a>
+        <%= link_to('Victoria', listings_path(location: "Victoria")) %>
+        <%= link_to('New South Wales', listings_path(location: "New South Wales")) %>
+        <%= link_to('Queensland', listings_path(location: "Queensland")) %>
+        <%= link_to('A.C.T', listings_path(location: "A.C.T")) %>
+        <%= link_to('Northern Teritory', listings_path(location: "Northern Teritory")) %>
+        <%= link_to('South Australia', listings_path(location: "South Australia")) %>
+        <%= link_to('West Australia', listings_path(location: "West Australia")) %>
+        <%= link_to('Tasmania', listings_path(location: "Tasmania")) %>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropbtn"><h4>Owner &#8595</h4></div>
+      <div class="dropdown-content">
+        <a href="#">How to Lease</a>
+        <% if user_signed_in? %>
+          <% @user_motorhomes.each do |motorhome| %>
+            <%= link_to("#{motorhome.uploaded_image}", new_listing_path(motorhome_id: motorhome.id)) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </li>
   
+<<<<<<< HEAD
+  <% if user_signed_in? %>
+  <li class="menu">
+    <div class="dropdown">
+      <div class="dropbtn"><h4>Dashboard</h4></div>
+      <div class="dropdown-content">
+        <%= link_to('Edit registration', edit_user_registration_path) %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      </div>
+    </div>
+  </li>
+=======
   <h3><a href="/" class="nav-item">care2share</a></h3>
   <% if user_signed_in? %><a href="/profiles" class="nav-item" >My Profile</a><% else %><div class="spacer">&nbsp</div><% end %>
   <% if user_signed_in? %><a href="/motorhomes" class="nav-item">My Motorhomes</a><% else %><div class="spacer">&nbsp</div><% end %>
   <% if user_signed_in? %><a href="/listings" class="nav-item" >My Listings</a><% else %><div class="spacer">&nbsp</div><% end %>
   <% if user_signed_in? %>
     <a class="nav-item"> <%= link_to('Edit Registration', edit_user_registration_path) %> </a>
+>>>>>>> 986ed7b4dca682e0952a6119aa7f4389a4b58844
   <% else %>
-    <a class="nav-item"> <%= link_to('Register', new_user_registration_path) %> </a>
+    <li class="link">
+      <%= link_to('Register', new_user_registration_path) %>
+    </li>
+    <li class="link">
+      <%=link_to('Login', new_user_session_path) %>
+    </li>
   <% end %>
-  <% if user_signed_in? %>
-    <a class="nav-item">  <%=link_to('Logout', destroy_user_session_path, method: :delete)%> </a>
-  <% else %>
-    <a class="nav-item"> <%=link_to('Login', new_user_session_path) %> </a>
-  <% end %>
-</div>
+
+</ul>
 
     <%= yield %>
   </body>
