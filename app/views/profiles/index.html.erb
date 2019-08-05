@@ -15,6 +15,7 @@
 
   <tbody>
     <% @profiles.each do |profile| %>
+    <% if current_user.id == profile.user_id %>
       <tr>
         <td><%= profile.name %></td>
         <td><%= profile.address %></td>
@@ -23,12 +24,13 @@
   <%= image_tag profile.avatar, class: 'image-size' %>
 <% else %>
   <p>No avatar for this user</p>
-<% end %>
+<% end %>    
         </td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
         <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
