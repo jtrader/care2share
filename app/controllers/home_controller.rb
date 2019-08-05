@@ -29,5 +29,5 @@ class HomeController < ApplicationController
         end
         @listings = @listing_date_from & @listing_date_to & @listing_max_price & @listing_min_beds
     end
-
+    # comment
 end
