@@ -15,7 +15,7 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <% if current_user.id == listing.motorhome_id %>   
+      <% if current_user.id == listing.user_id %>   
       <tr>
         <td><%= listing.start_time %></td>
         <td><%= listing.end_time %></td>
