@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_07_30_064440) do
-
-ActiveRecord::Schema.define(version: 2019_07_31_030135) do
-
+ActiveRecord::Schema.define(version: 2019_08_05_022015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +63,9 @@ ActiveRecord::Schema.define(version: 2019_07_31_030135) do
     t.bigint "motorhome_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["motorhome_id"], name: "index_listings_on_motorhome_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "motorhomes", force: :cascade do |t|
@@ -133,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_030135) do
   add_foreign_key "creplies", "comments"
   add_foreign_key "creplies", "users", column: "writer_id"
   add_foreign_key "listings", "motorhomes"
+  add_foreign_key "listings", "users"
   add_foreign_key "motorhomes", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "listings"

@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    @user = authorize User.find(params[:id])
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    @user = authorize User.find(params[:id])
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    @user = authorize User.find(params[:id])
   end
 
   class Scope

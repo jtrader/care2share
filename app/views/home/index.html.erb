@@ -54,10 +54,10 @@
       <tbody>
         <tr>
           <td>
-            <%= date_field_tag :date_from, "#{params[:date_from]}", :onchange => "this.form.submit();" %>
+            <%= date_field_tag :start_time, "#{params[:start_time]}", :onchange => "this.form.submit();" %>
           </td>
           <td>
-            <%= date_field_tag :date_to, "#{params[:date_to]}", :onchange => "this.form.submit();" %>
+            <%= date_field_tag :end_time, "#{params[:end_time]}", :onchange => "this.form.submit();" %>
           </td>
           <td>
             <%= number_field_tag :max_price, "#{params[:max_price]}", :onchange => "this.form.submit();", min: 100, max: 5000, step: 100 %>
