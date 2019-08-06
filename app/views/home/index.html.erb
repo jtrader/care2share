@@ -1,5 +1,3 @@
-
-
 <h3>Search</h3>
 <div class="align">
 <%= form_tag({}, {:method => :get}) do %>
@@ -39,11 +37,28 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Date from</th>
       <th>Date to</th>
       <th>Price</th>
       <th>Motorhome</th>
+      <th>Model</th>
+      <th>Beds</th>
       <th colspan="3"></th>
     </tr>
   </thead>
+    <tbody>
+    <% @listings.each do |listing| %> 
+      <tr>
+        <td><%= image_tag listing.motorhome.uploaded_image, class: 'avatarsmall' %></td>
+        <td><%= listing.start_time %></td>
+        <td><%= listing.end_time %></td>
+        <td>$<%= listing.price %></td>
+        <td><%= listing.motorhome.make %></td>
+        <td><%= listing.motorhome.model %></td>
+        <td><%= listing.motorhome.beds %></td>
+        <td><%= link_to 'Show', listing %></td>
+      </tr>
+    <% end %>
+  </tbody>
   </div>

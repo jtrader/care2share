@@ -1,8 +1,13 @@
+
+<div class="align">
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @motorhome.uploaded_image %>
+</div>
+<div class="align">
 <p>
   <strong>Owner:</strong>
-  <%= link_to @motorhome.user.profile.name, @motorhome.user.profile %>
+  <%= image_tag @motorhome.user.profile.avatar, class: 'avatar' %><%= link_to @motorhome.user.profile.name, @motorhome.user.profile %>
 </p>
 <p>
   <strong>Make:</strong>
@@ -18,13 +23,12 @@
 </p>
 <p>
   <strong>Length:</strong>
-  <%= @motorhome.length %>
+  <%= @motorhome.length %> feet
 </p>
 <p>
   <strong>Beds:</strong>
   <%= @motorhome.beds %>
 </p>
-<%= image_tag @motorhome.uploaded_image %>
-
+</div>
 <%= link_to 'Edit', edit_motorhome_path(@motorhome) %> |
 <%= link_to 'Back', motorhomes_path %>

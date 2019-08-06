@@ -7,6 +7,14 @@ body {
   line-height: 18px;
 }
 
+.avatar { border-radius: 50%;
+  width: 100px;
+  height: 100px;}
+
+.avatarsmall { border-radius: 50%;
+    width: 50px;
+    height: 50px;}
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -82,3 +90,5 @@ div {
 label {
   display: block;
 }
+
+
