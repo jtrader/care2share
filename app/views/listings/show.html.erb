@@ -48,10 +48,10 @@
 <%= month_calendar events: @listings do |date, listings| %>
   <%= date %>
 
-  <% listings.each do |listings| %>
-    <% if current_user.id == listings.user_id %>
+  <% listings.each do |listing| %>
+    <% if listing.id == @listing.id %>
     <div>
-      <%= listings.motorhome.make %>
+      <%= listing.motorhome.make %>
     </div>
     <% end %>
   <% end %>
