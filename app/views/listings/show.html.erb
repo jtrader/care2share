@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<div class="align">
 <p>
-  <strong>Owner:</strong>
-  <%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
+  <%= image_tag @listing.motorhome.uploaded_image %>
+</p>
+</div>
+<div class="align">
+<p>
+  <%= image_tag @listing.motorhome.user.profile.avatar, class: 'avatarsmall' %><%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
 </p>
 
 <p>
@@ -17,7 +20,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @listing.price %>
+  $<%= @listing.price %>
 </p>
 
 <p>
@@ -33,21 +36,22 @@
   <%= @listing.motorhome.year %>
 </p>
 
-<p>
-  <strong>Motorhome:</strong>
-  <%= image_tag @listing.motorhome.uploaded_image %>
-</p>
-<br>
+</div>
+<div class="align">
 
 <%= month_calendar events: @listings do |date, listings| %>
   <%= date %>
 
   <% listings.each do |listings| %>
+    <% if current_user.id == listings.user_id %>
     <div>
       <%= listings.motorhome.make %>
     </div>
+    <% end %>
   <% end %>
 <% end %>
-
+</div>
+<div>
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
+</div>

@@ -1,5 +1,9 @@
-<p id="notice"><%= notice %></p>
-
+<div class="align">
+<p>
+  <%= image_tag @profile.avatar %>
+</p>
+</div>
+<div class="align">
 <p>
   <strong>Name:</strong>
   <%= @profile.name %>
@@ -15,16 +19,14 @@
   <%= @profile.phone %>
 </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= image_tag @profile.avatar %>
-</p>
 
 
+</div>
+<div class="align">
 <p>
   <h2>Comments</h2>
   <% if @comments == [] %>
-    No one has commented on <%= @profile.name %>! What a loser...
+    No one has commented on <%= @profile.name %>! 
   <% end %>
   <% if @profile != current_user.profile %>
     <h3><%= current_user.profile.name %></h3>
@@ -58,7 +60,9 @@
 
   <% end %>
 </p>
-
+</div>
+<div>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
+</div>
