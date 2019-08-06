@@ -37,6 +37,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Date from</th>
       <th>Date to</th>
       <th>Price</th>
@@ -49,6 +50,7 @@
     <tbody>
     <% @listings.each do |listing| %> 
       <tr>
+        <td><%= image_tag listing.motorhome.uploaded_image, class: 'avatarsmall' %></td>
         <td><%= listing.start_time %></td>
         <td><%= listing.end_time %></td>
         <td>$<%= listing.price %></td>
