@@ -27,6 +27,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listings = Listing.all
+    @claims = Claim.where(listing: @listing)
   end
 
   # GET /listings/new
