@@ -16,7 +16,7 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="field">
@@ -24,6 +24,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit :"Make A Claim" %>
+    <%= form.submit :"Make A Booking" %>
   </div>
 <% end %>
