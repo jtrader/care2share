@@ -34,7 +34,10 @@
     font-family: "York";
     font-size: 3em;
     text-align: center;
-    color: white ;
+    color: white;
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
+    padding-top: 0.23em
 }
 
  a {
@@ -64,7 +67,7 @@
  }
 
  .nav-container > a:hover {
-     color: #E3272C;
+     color: rgb(100, 85, 255);
  }
 
 .nav-item {

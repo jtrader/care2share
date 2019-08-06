@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @listing.motorhome.user != current_user %>
+  <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
+<% end %>
+
 <p>
   <strong>Owner:</strong>
   <%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
