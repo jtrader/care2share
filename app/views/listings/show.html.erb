@@ -1,9 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<% if @listing.motorhome.user != current_user %>
+  <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
+<% end %>
+
 <div class="align">
-<p>
-  <%= image_tag @listing.motorhome.uploaded_image %>
-</p>
+  <p>
+    <%= image_tag @listing.motorhome.uploaded_image %>
+  </p>
 </div>
-<div class="align">
+
 <p>
   <%= image_tag @listing.motorhome.user.profile.avatar, class: 'avatarsmall' %><%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
 </p>
