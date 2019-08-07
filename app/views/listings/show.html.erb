@@ -1,12 +1,60 @@
+
 <% if @listing.motorhome.user != current_user %>
   <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
 <% end %>
+
+<p id="notice"><%= notice %></p>
+
 
 <div class="align">
   <p>
     <%= image_tag @listing.motorhome.uploaded_image, class: 'profile' %>
   </p>
 </div>
+
+<% if @listing.motorhome.user != current_user %>
+  <% if Claim.exists?(user: current_user, listing: @listing) %>
+    You Have Made A Booking For This Listing
+  <% else %>
+    <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
+  <% end %>
+<% else %>
+  <% if Claim.exists?(listing: @listing) %>
+    Users who have made a booking;
+    <div class="align">
+    <table>
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @claims.each do |claim| %>
+          <tr>
+            <td> <% if claim.user.profile.avatar.attached? %>
+            <%= image_tag claim.user.profile.avatar, class: 'avatar' %>
+          <% else %>
+            <p>No avatar for this user</p>
+          <% end %>    
+            </td>
+            <td><%= link_to claim.user.profile.name, claim.user.profile %></td>
+            <td><%= claim.user.profile.address %></td>
+            <td><%= claim.user.profile.phone %></td>
+            <td><%= link_to 'Reject', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  <% else %>
+    No Bookings
+  <% end %>
+<% end %>
 
 <p>
   <%= image_tag @listing.motorhome.user.profile.avatar, class: 'avatarsmall' %><%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
