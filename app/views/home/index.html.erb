@@ -8,7 +8,7 @@
           <th>Date to</th>
           <th>Max Price</th>
           <th>Min Beds</th>
-          <th colspan="1"></th>
+
         </tr>
       </thead>
       <tbody>
@@ -30,6 +30,19 @@
     </table>
   <% end %>
 </div>
+
+
+<br>
+
+<div class="child-page-listing">
+  <div class="grid-container">
+    <% @listings.each do |listing| %>
+      <article id="3685" class="motorhome-listing">
+        <a class="motorhome-title" href=""> $<%= listing.price %> </a>
+        <div class="motorhome-image">
+            <%= image_tag listing.motorhome.uploaded_image %>
+        </div>
+      </article>
 
 <div class="align-no-bg">
 <table>
@@ -57,6 +70,11 @@
         <td><%= listing.motorhome.beds %></td>
         <td><%= link_to 'Show', listing %></td>
       </tr>
+
     <% end %>
-  </tbody>
   </div>
+  <!-- end grid container -->
+
+
+
+</div>

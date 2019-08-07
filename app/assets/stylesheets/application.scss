@@ -150,3 +150,82 @@
   display: block;
 }
 
+
+
+// Home/Index CSS
+
+.child-page-listing {
+  background: rgba(10, 10, 10, 0.5);
+}
+
+img {
+  width: 100%; /* need to overwrite inline dimensions */
+  height: auto;
+}
+h2 {
+  margin-bottom: .5em;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+/* hover styles */
+.motorhome-listing {
+  position: relative;
+}
+
+.motorhome-image {
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 90px;
+}
+
+.motorhome-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.motorhome-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  color: black !important;
+
+  /* position the text in t’ middle*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motorhome-listing:hover .motorhome-title {
+  opacity: 1;
+   border-radius: 25px;
+}
+
+.motorhome-listing:hover .motorhome-image img {
+  filter: blur(4px);
+}
+
+
+/* for touch screen devices */
+@media (hover: none) {
+  .motorhome-title {
+    opacity: 1;
+  }
+  .motorhome-image img {
+    filter: blur(2px);
+  }
+}
+
+
