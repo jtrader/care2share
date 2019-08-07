@@ -1,8 +1,14 @@
+
+<% if @listing.motorhome.user != current_user %>
+  <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
+
 
 <div class="align">
   <p>
-    <%= image_tag @listing.motorhome.uploaded_image %>
+    <%= image_tag @listing.motorhome.uploaded_image, class: 'profile' %>
   </p>
 </div>
 
@@ -86,12 +92,13 @@
 <div class="align">
 
 <%= month_calendar events: @listings do |date, listings| %>
-  <%= date %>
+  <%= date.day %>
 
-  <% listings.each do |listings| %>
-    <% if current_user.id == listings.user_id %>
+  <% listings.each do |listing| %>
+    <% if listing.id == @listing.id %>
     <div>
-      <%= listings.motorhome.make %>
+      <%= image_tag @listing.motorhome.uploaded_image, class: 'avatar' %>
+      $<%= @listing.price %>
     </div>
     <% end %>
   <% end %>
