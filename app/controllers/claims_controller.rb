@@ -4,7 +4,7 @@ class ClaimsController < ApplicationController
   # GET /claims
   # GET /claims.json
   def index
-    @claims = Claim.all
+    @claims = Claim.where(user: current_user)
   end
 
   # GET /claims/1
@@ -28,7 +28,7 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
-        format.html { redirect_to @claim.listing, notice: 'Claim was successfully created.' }
+        format.html { redirect_to @claim.listing, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ClaimsController < ApplicationController
   def update
     respond_to do |format|
       if @claim.update(claim_params)
-        format.html { redirect_to @claim.listing, notice: 'Claim was successfully updated.' }
+        format.html { redirect_to @claim.listing, notice: 'Booking was approved.' }
         format.json { render :show, status: :ok, location: @claim }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ClaimsController < ApplicationController
   def destroy
     @claim.destroy
     respond_to do |format|
-      format.html { redirect_to @claim.listing, notice: 'Claim was successfully destroyed.' }
+      format.html { redirect_to @claim.listing, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
