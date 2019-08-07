@@ -1,11 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <div class="align">
-  <p>
-    <%= image_tag @listing.motorhome.uploaded_image %>
-  </p>
+  <h3 align="center">
+    <%= image_tag @listing.motorhome.uploaded_image, class: 'profile' %>
+    <br><br>
+    <%= @listing.motorhome.make %> <%= @listing.motorhome.model %>
+  </h3>
 </div>
-
+  <div class="align">
+    <h4>$<%= @listing.price %> per day</h4>
+  </div>
+<div class="align">
 <% if @listing.motorhome.user != current_user %>
   <% if Claim.exists?(user: current_user, listing: @listing) %>
     You Have Made A Booking For This Listing
@@ -64,7 +67,8 @@
     No Bookings
   <% end %>
 <% end %>
-
+</div>
+<div class="align">
 <p>
   <%= image_tag @listing.motorhome.user.profile.avatar, class: 'avatarsmall' %><%= link_to @listing.motorhome.user.profile.name, @listing.motorhome.user.profile %>
 </p>
@@ -80,39 +84,33 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  $<%= @listing.price %>
-</p>
-
-<p>
-  <strong>Make:</strong>
-  <%= @listing.motorhome.make %>
-</p>
-<p>
-  <strong>Model:</strong>
-  <%= @listing.motorhome.model %>
-</p>
-<p>
   <strong>Year:</strong>
   <%= @listing.motorhome.year %>
 </p>
 
+<p>
+  <strong>Length:</strong>
+  <%= @listing.motorhome.length %> feet
+</p>
+<p>
+  <strong>Beds:</strong>
+  <%= @listing.motorhome.beds %> 
+</p>
 </div>
 <div class="align">
 
 <%= month_calendar events: @listings do |date, listings| %>
-  <%= date %>
+  <%= date.day %>
 
-  <% listings.each do |listings| %>
-    <% if current_user.id == listings.user_id %>
+  <% listings.each do |listing| %>
+    <% if listing.id == @listing.id %>
     <div>
-      <%= listings.motorhome.make %>
+      <%= image_tag @listing.motorhome.uploaded_image, class: 'avatar' %>
+      $<%= @listing.price %>
     </div>
     <% end %>
   <% end %>
 <% end %>
 </div>
 <div>
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
 </div>

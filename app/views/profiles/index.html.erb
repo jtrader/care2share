@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h3>My Profile</h3>
-<div class="align">
+<div class="align-no-bg">
 <table>
   <thead>
     <tr>
-      <th>Avatar</th>
+      <th></th>
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
@@ -28,14 +28,10 @@
         <td><%= profile.phone %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %>
 </div>
+
