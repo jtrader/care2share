@@ -1,5 +1,5 @@
 <h3>Search</h3>
-<div class="align">
+<div class="align-no-bg">
 <%= form_tag({}, {:method => :get}) do %>
     <table>
       <thead>
@@ -8,7 +8,6 @@
           <th>Date to</th>
           <th>Max Price</th>
           <th>Min Beds</th>
-          <th>Min Rating</th>
           <th colspan="1"></th>
         </tr>
       </thead>
@@ -26,14 +25,13 @@
           <td>
             <%= select_tag :min_beds, options_for_select(0..6, params[:min_beds]), :onchange => "this.form.submit();" %>
           </td>
-          <td>1<input id="rating" type="range" min="1" max="5">5</td>
         </tr>
       </tbody>
     </table>
   <% end %>
 </div>
 
-<div class="align">
+<div class="align-no-bg">
 <table>
   <thead>
     <tr>
