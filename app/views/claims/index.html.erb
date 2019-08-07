@@ -1,4 +1,34 @@
 
+
+<p id="notice"><%= notice %></p>
+
+<h3>Your Bookings</h3>
+<div class="align">
+  <table>
+    <thead>
+      <tr>
+        <th>Listing</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @claims.each do |claim| %>
+        <tr>
+          <td><%= image_tag claim.listing.motorhome.uploaded_image, class: 'avatar' %></td>
+          <td>
+            <% if claim.approved == true %>
+              Your Booking Was Approved!
+              <%= link_to %>
+            <% else %>
+              Your Booking Is Waiting For Approval...
+            <% end %>
+          </td>
+          <td><%= link_to 'Cancel Booking', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <div class="align-no-bg">
 <h1>Bookings</h1>
 </div>
