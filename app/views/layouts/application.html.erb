@@ -11,17 +11,18 @@
 
 <div class="nav-container">
   <h3><a href="/" class="nav-item">care2share</a></h3>
-  <% if user_signed_in? %><a href="/profiles" class="nav-item" >My Profile</a><% else %><div class="spacer">&nbsp</div><% end %>
-  <% if user_signed_in? %><a href="/motorhomes" class="nav-item">My Motorhomes</a><% else %><div class="spacer">&nbsp</div><% end %>
-  <% if user_signed_in? %><a href="/listings" class="nav-item" >My Listings</a><% else %><div class="spacer">&nbsp</div><% end %>
   <% if user_signed_in? %>
+    <a href="/profiles" class="nav-item" >My Profile</a>
+    <a href="/motorhomes" class="nav-item">My Motorhomes</a>
+    <a href="/listings" class="nav-item" >My Listings</a>
+    <a href="/claims" class="nav-item" >My Bookings</a>
     <a class="nav-item"> <%= link_to('Edit Registration', edit_user_registration_path) %> </a>
-  <% else %>
-    <a class="nav-item"> <%= link_to('Register', new_user_registration_path) %> </a>
-  <% end %>
-  <% if user_signed_in? %>
     <a class="nav-item">  <%=link_to('Logout', destroy_user_session_path, method: :delete)%> </a>
   <% else %>
+    <div class="spacer">&nbsp</div>
+    <div class="spacer">&nbsp</div>
+    <div class="spacer">&nbsp</div>
+    <a class="nav-item"> <%= link_to('Register', new_user_registration_path) %> </a>
     <a class="nav-item"> <%=link_to('Login', new_user_session_path) %> </a>
   <% end %>
 </div>

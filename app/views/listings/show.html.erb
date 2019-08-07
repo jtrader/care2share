@@ -10,7 +10,7 @@
   <% if Claim.exists?(user: current_user, listing: @listing) %>
     You Have Made A Booking For This Listing
   <% else %>
-    <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing} %>
+    <%= render partial: 'claims/form', locals: {claim: Claim.new, listing: @listing, status: false} %>
   <% end %>
 <% else %>
   <% if Claim.exists?(listing: @listing) %>
@@ -23,24 +23,39 @@
           <th>Name</th>
           <th>Address</th>
           <th>Phone</th>
-          <th colspan="1"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @claims.each do |claim| %>
+        <% if Claim.exists?(approved: true) %>
+          <% claim = Claim.where(approved: true).first %>
           <tr>
-            <td> <% if claim.user.profile.avatar.attached? %>
-            <%= image_tag claim.user.profile.avatar, class: 'avatar' %>
-          <% else %>
-            <p>No avatar for this user</p>
-          <% end %>    
-            </td>
+            <td><% if claim.user.profile.avatar.attached? %>
+              <%= image_tag claim.user.profile.avatar, class: 'avatar' %>
+            <% else %>
+              <p>No avatar for this user</p>
+            <% end %></td>
             <td><%= link_to claim.user.profile.name, claim.user.profile %></td>
             <td><%= claim.user.profile.address %></td>
             <td><%= claim.user.profile.phone %></td>
-            <td><%= link_to 'Reject', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>I Have Booked This Listing!</td>
           </tr>
+        <% else %>
+          <% @claims.each do |claim| %>
+            <tr>
+              <td><% if claim.user.profile.avatar.attached? %>
+                <%= image_tag claim.user.profile.avatar, class: 'avatar' %>
+              <% else %>
+                <p>No avatar for this user</p>
+              <% end %></td>
+              <td><%= link_to claim.user.profile.name, claim.user.profile %></td>
+              <td><%= claim.user.profile.address %></td>
+              <td><%= claim.user.profile.phone %></td>
+              <td><%= link_to 'Reject', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Approve', claim_path(claim: {listing_id: claim.listing.id, user_id: claim.user.id, approved: true}, id: claim.id), method: :patch, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
