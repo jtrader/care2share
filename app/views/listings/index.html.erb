@@ -8,6 +8,7 @@
       <th></th>
       <th>Date from</th>
       <th>Date to</th>
+      <th>Address</th>
       <th>Price</th>
       <th>Motorhome</th>
       <th colspan="3"></th>
@@ -16,11 +17,12 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <% if current_user.id == listing.user_id %>   
+      <% if current_user.id == listing.user_id %>
       <tr>
         <td><%= image_tag listing.motorhome.uploaded_image, class: 'avatarsmall' %></td>
         <td><%= listing.start_time %></td>
         <td><%= listing.end_time %></td>
+        <td><%= listing.address %></td>
         <td><%= listing.price %></td>
         <td><%= listing.motorhome.make %></td>
         <td><%= link_to 'Show', listing %></td>
