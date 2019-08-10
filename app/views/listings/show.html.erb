@@ -6,7 +6,7 @@
   </h3>
 </div>
   <div class="align">
-    <h4>$<%= @listing.price %> per day</h4>
+    <h4>$<%= @listing.price %></h4>
   </div>
 <div class="align">
 <% if @listing.motorhome.user != current_user %>
@@ -84,6 +84,21 @@
 </p>
 
 <p>
+  <strong>Adress</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Latitude</strong>
+  <%= @listing.latitude %>
+</p>
+
+<p>
+  <strong>Longitude</strong>
+  <%= @listing.longitude %>
+</p>
+
+<p>
   <strong>Year:</strong>
   <%= @listing.motorhome.year %>
 </p>
@@ -94,10 +109,12 @@
 </p>
 <p>
   <strong>Beds:</strong>
-  <%= @listing.motorhome.beds %> 
+  <%= @listing.motorhome.beds %>
 </p>
 </div>
-<div class="align">
+
+
+<br>
 
 <%= month_calendar events: @listings do |date, listings| %>
   <%= date.day %>
@@ -113,4 +130,13 @@
 <% end %>
 </div>
 <div>
+</div>
+
+<br>
+
+<h3>Nearby Listings</h3>
+<div class="align">
+  <% for listing in @listing.nearbys(10) %>
+  <ul> <%= link_to listing.address, listing %> (<%= listing.distance.round(2) %>) Kilometers </ul>
+  <% end %>
 </div>
