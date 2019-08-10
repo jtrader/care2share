@@ -38,9 +38,9 @@
   <div class="grid-container">
     <% @listings.each do |listing| %>
       <article id="3685" class="motorhome-listing">
-        <a class="motorhome-title" href=""> $<%= listing.price %> </a>
+        <a class="motorhome-title" href="listings/<%= listing.id %>"> $<%= listing.price %> </a>
         <div class="motorhome-image">
-            <%= image_tag listing.motorhome.uploaded_image %>
+            <%= link_to image_tag listing.motorhome.uploaded_image %>
         </div>
       </article>
 
