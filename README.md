@@ -226,34 +226,34 @@ The data structure of the care2share app shares similarities to another p2p moto
 The database relational design was essential in providing the solution, creating a user id key which was related to a number of tables ensured that users would only be able to access the listings they have uploaded. In addition to this a cascading relation type was used for Profiles to Motorhomes, Motorhomes to Listings and Listings to Bookings.
 ### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 We used the following active record associations:
-Claim:
-  belongs_to :listing
-  belongs_to :user
-Comment:
-  belongs_to :writer, class_name: "User"
-  belongs_to :recipient, class_name: "User"
-  has_many :creply
-Creply:
-  belongs_to :writer, class_name: "User"
-  belongs_to :comment
-Listing: 
-  belongs_to :motorhome
-  has_one :review
-Motorhome:
-  has_many :listing
-  belongs_to :user
-Profile: 
-  belongs_to :user
-  validates :user_id, uniqueness: true
-Review:
-  belongs_to :user
-  belongs_to :listing
-  has_many :rreply
-  validates :listing_id, uniqueness: true
-User: 
-  has_one :profile
-  has_many :motorhome
-  has_many :comment
+* Claim:
+  * belongs_to :listing
+  * belongs_to :user
+* Comment:
+  * belongs_to :writer, class_name: "User"
+  * belongs_to :recipient, class_name: "User"
+  * has_many :creply
+* Creply:
+  * belongs_to :writer, class_name: "User"
+  * belongs_to :comment
+* Listing: 
+  * belongs_to :motorhome
+  * has_one :review
+* Motorhome:
+  * has_many :listing
+  * belongs_to :user
+* Profile: 
+  * belongs_to :user
+  * validates :user_id uniqueness: true
+* Review:
+  * belongs_to :user
+  * belongs_to :listing
+  * has_many :rreply
+  * validates :listing_id, uniqueness: true
+* User: 
+  * has_one :profile
+  * has_many :motorhome
+  * has_many :comment
 ### 14. Provide your database schema design.
 ### ERD / Database Relationships
 ![image](https://i.imgur.com/ZgQx6ha.png)
