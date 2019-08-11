@@ -97,7 +97,9 @@ As a Hirer you can:
 ![image](https://i.imgur.com/l3JKQky.png)
 
 ### Screenshots of Trello board(s)
+
 We used Trello to help manage what we had to complete ensuring that the group were all on the same page about what had been completed and what needed to be done.
+
 ![imgage](https://i.imgur.com/xJod15u.png)
 ![imgage](https://i.imgur.com/bZYD3qK.png)
 ![imgage](https://i.imgur.com/GKb72mk.png)
