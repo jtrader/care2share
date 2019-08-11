@@ -9,6 +9,9 @@ gem 'pundit'
 
 gem 'hirb'
 
+# For searching and viewing by locations
+gem 'geocoder'
+
 # Calendar for all booked listings
 gem "simple_calendar", "~> 2.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

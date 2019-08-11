@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .simple-calendar {
+    background: rgba(10, 10, 10, 0.5);
     .day {}
-  
+
     .wday-0 {}
     .wday-1 {}
     .wday-2 {}
@@ -12,16 +13,17 @@
     .wday-4 {}
     .wday-5 {}
     .wday-6 {}
-  
+
     .today {background: rgba(255, 255, 255, 0.199) !important;}
     .past {}
     .future {}
-  
+
     .start-date {}
-  
-    .prev-month {background: rgba(0, 0, 0, 0.5) !important;}
-    .next-month {background: rgba(0, 0, 0, 0.5)  !important;}
+
+    .prev-month {background: rgba(255, 255, 255, 0.199) !important;}
+    .next-month {background: rgba(255, 255, 255, 0.199)  !important;}
     .current-month {}
-  
+
     .has-events {}
+
   }
