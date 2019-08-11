@@ -1,9 +1,12 @@
 <h3> Search for Listings</h3>
 <div class="align">
-  <%= form_tag listings_path, :method => :get do %>
+  <%= form_tag({}, {:method => :get}) do %>
     <p>
-      <%= text_field_tag :search, params[:search]%>
-      <%= submit_tag "Search", :name => nil %>
+      <%= text_field_tag :search, params[:search], :onchange => "this.form.submit();", :placeholder => "Location"%>
+      <%= date_field_tag :start_time, "#{params[:start_time]}", :onchange => "this.form.submit();" , :placeholder => "Date from", :value => Time.now.strftime('%Y-%m-%d') %>
+      <%= date_field_tag :end_time, "#{params[:end_time]}", :onchange => "this.form.submit();", :placeholder => "Date to" %>
+      <%= number_field_tag :max_price, "#{params[:max_price]}", :onchange => "this.form.submit();", :placeholder => "Max Price", min: 100, max: 5000, step: 100 %>
+
     </p>
   <% end %>
 </div>
@@ -18,7 +21,7 @@
         <a class="motorhome-title" href=<%= "listings/#{listing.id}" %> > $<%= listing.price %></a>
 
         <div class="motorhome-image">
-            <%= image_tag listing.motorhome.uploaded_image %>
+            <%= link_to image_tag listing.motorhome.uploaded_image %>
         </div>
 
       </article>
