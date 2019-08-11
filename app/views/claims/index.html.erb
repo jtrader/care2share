@@ -18,7 +18,8 @@
           <td><%= image_tag claim.listing.motorhome.uploaded_image, class: 'avatar' %></td>
           <% if claim.approved == true %>
             <td>Your Booking Was Approved!</td>
-            <td><%= link_to 'Pay For Booking', "https://www.youtube.com/watch?v=QabOws88zD4" %></td>
+            <% puts claim.listing.price.to_i %>
+            <td><%= render partial: "layouts/shared/stripe_form", locals: {amount: claim.listing.price.to_i}%></td>
           <% else %>
             <td>Your Booking Is Waiting For Approval...</td>
             <td><%= link_to 'Cancel Booking', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
