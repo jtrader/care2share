@@ -76,34 +76,11 @@ As a Hirer you can:
 ### User Journey
 ![image](https://i.imgur.com/qaw1q1q.png)
 
-### Wireframes
-![image](https://i.imgur.com/WBcI8eD.png)
-![image](https://i.imgur.com/GofLw1Q.png)
-![image](https://i.imgur.com/gY2BtXO.png)
-![image](https://i.imgur.com/j9swojC.png)
-![image](https://i.imgur.com/gVqjnnG.png)
-![image](https://i.imgur.com/HEqd9bb.png)
-![image](https://i.imgur.com/l9qvf4C.png)
-![image](https://i.imgur.com/EEDW2fZ.png)
-
-### ERD / Database Relationships
-![image](https://i.imgur.com/ZgQx6ha.png)
-
-------
-
 ## Planning Process
 
 ### Project Plan & Timeline
 ![image](https://i.imgur.com/l3JKQky.png)
 
-### Screenshots of Trello board(s)
-
-We used Trello to help manage what we had to complete ensuring that the group were all on the same page about what had been completed and what needed to be done.
-
-![imgage](https://i.imgur.com/xJod15u.png)
-![imgage](https://i.imgur.com/bZYD3qK.png)
-![imgage](https://i.imgur.com/GKb72mk.png)
-------
 
 ## Short Answer Questions
 #### 1. What is the need (i.e. challenge) that you will be addressing in your project?
@@ -163,8 +140,9 @@ We decided to use PostgreSQL for our application due to:
 * It is a relational database
 
 ### 7. Identify and describe the production database setup (i.e. postgres instance).
+We initially created an local instance of a PostgreSQL database using Ruby on Rails by calling the flag -d postgresql when creating the Rails app. We then call 'rails db:create' and set up our tables and columns using migrations: eg 'rails g model user' & 'rails g migration AddNameToUser'. This database then becomes our Development and testing database.
 
-
+For Production, the Migrations and Schema of our Development Database are pushed to Heroku from the GitHub repository, then set up within Heroku. To do this we run the same commands to create the database and run migrations, only we put 'heroku run' before the command.
 
 ### 8. Describe the architecture of your App.
 
@@ -242,23 +220,68 @@ end
 
 
 ### 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+The data structure of the care2share app shares similarities to another p2p motorhome rental website by the name of camplify, where a user creates and account and is able to list their motorhome for rental on the site, Renters are then similarly be able to search through these listings based on location and dates available before being able select and rent a motorhome, on camplify the site caters for other types of items to be rented such as camper trailers and caravans but the core data structure of the site is similar to care2share.
 
 ### 12. Discuss the database relations to be implemented.
-
+The database relational design was essential in providing the solution, creating a user id key which was related to a number of tables ensured that users would only be able to access the listings they have uploaded. In addition to this a cascading relation type was used for Profiles to Motorhomes, Motorhomes to Listings and Listings to Bookings.
 ### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-
+We used the following active record associations:
+Claim:
+  belongs_to :listing
+  belongs_to :user
+Comment:
+  belongs_to :writer, class_name: "User"
+  belongs_to :recipient, class_name: "User"
+  has_many :creply
+Creply:
+  belongs_to :writer, class_name: "User"
+  belongs_to :comment
+Listing: 
+  belongs_to :motorhome
+  has_one :review
+Motorhome:
+  has_many :listing
+  belongs_to :user
+Profile: 
+  belongs_to :user
+  validates :user_id, uniqueness: true
+Review:
+  belongs_to :user
+  belongs_to :listing
+  has_many :rreply
+  validates :listing_id, uniqueness: true
+User: 
+  has_one :profile
+  has_many :motorhome
+  has_many :comment
 ### 14. Provide your database schema design.
+### ERD / Database Relationships
+![image](https://i.imgur.com/ZgQx6ha.png)
 
 ### 15. Provide User stories for your App.
+Hirer: A person looking for motorhome for their next holiday hears about care2shares fantastic new website and decides to visit. The hirer is then able to search for nearby available motorhomes based on where the motorhome is based and also when it’s available. 
+The user then is able to signup for an account, once completed they are able to make a booking request on a desired motorhome. The owner then either accepts or rejects the booking request, in this case the owner accepts, the user then checks the status within my bookings to see that they have been approved and that they can then pay for motorhome via the website.
 
+Motorhome owner: As a motorhome owner I wish to rent out my motorhome because I do not use it all the time, so I visit care2share and create an account, after creating an account I set up my profile page so potential hirers can see who they are hiring from, after that’s complete, I create a motorhome I wish the rent out including a photo, now it’s time to create listings for when my motorhome is available for hire once completed my listings appear on the care2share website ready to be booked, I check my listing page to see if anybody has made a booking, somebody has so I can look at their profile and decide whether or not to accept their booking request, I choose to accept and await payment from care2share.
 ### 16. Provide Wireframes for your App.
-
+![image](https://i.imgur.com/WBcI8eD.png)
+![image](https://i.imgur.com/GofLw1Q.png)
+![image](https://i.imgur.com/gY2BtXO.png)
+![image](https://i.imgur.com/j9swojC.png)
+![image](https://i.imgur.com/gVqjnnG.png)
+![image](https://i.imgur.com/HEqd9bb.png)
+![image](https://i.imgur.com/l9qvf4C.png)
+![image](https://i.imgur.com/EEDW2fZ.png)
 ### 17. Describe the way tasks are allocated and tracked in your project.
+We used Trello to help manage what we had to complete ensuring that the group were all on the same page about what had been completed and what needed to be done.
 
+![imgage](https://i.imgur.com/xJod15u.png)
+![imgage](https://i.imgur.com/bZYD3qK.png)
+![imgage](https://i.imgur.com/GKb72mk.png)
 ### 18. Discuss how Agile methodology is being implemented in your project.
 
 ### 19. Provide an overview and description of your Source control process.
-
+GitHub was used for our source control, enabling multiple users to work on the same project at the same time, when work was completed it was pushed to branches to be merged with the master on GitHub. Conflicts were resolved and sometimes work was overwritten but it was a learning process.
 ### 20. Provide an overview and description of your Testing process.
 
 ### 21. Discuss and analyse requirements related to information system security.
