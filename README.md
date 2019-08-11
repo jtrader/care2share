@@ -167,6 +167,17 @@ Database:
 * PostgreSQL relational database which stores information used by the application
 
 ### 9. Explain the different high-level components (abstractions) in your App.
+In structuring the components of our application, we followed the Ruby on Rails conventions adopting an MVC model coupled with Active Record as described below:
+
+Model - Defines the structure of the data held in our database, including attributes of objects, logic (functions) used to manipulate that data at the database level, dependencies / validations, and the relationships between different objects. Files are located in app/models directory
+
+View - Uses HTML and Embedded Ruby to describe how the pages of the application appear within a browser. Files are located in app/views, and styled with Sass CSS files located in app/assets directories.
+
+Controller - Sits between the Models, Views, and any APIs and controls their function. Controller methods can be called via RESTful API routes, which are in turn triggered by HTTP requests from the Client, or in some cases can be called by changes in the state of the data in the databse. Controller files are located in app/controllers directory.
+
+Active Record
+
+A layer of abstraction that sits between our application and the database. Active record abstracts SQL code so that we can talk to the database using Ruby, and allows us to tread the data in the Model as Ruby objects.
 
 ### 10. Detail any third party services that your App will use.
 
