@@ -18,12 +18,12 @@
 
  @font-face {
     font-family: "York";
-    src: url('yorkwhiteletter.ttf') format('truetype');
+    src: url(asset-path('yorkwhiteletter.ttf')) format('truetype');
   }
 
  body {
      margin: 0px;
-     background: url('background.jpg') no-repeat center center fixed;
+     background: url('https://i.imgur.com/cySiiyH.jpg') no-repeat center center fixed;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
@@ -40,12 +40,21 @@
     padding-top: 0.23em
 }
 
+
+
  a {
      text-decoration: none;
      color: white
  }
 .spacer {
     width: 20%;
+}
+
+.nav-pic {
+  border-radius: 50%;
+  width: 62.5px;
+  height: 62.5px;
+  object-fit: cover;
 }
 
  .nav-container {
