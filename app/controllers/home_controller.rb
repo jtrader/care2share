@@ -10,7 +10,20 @@ class HomeController < ApplicationController
     @listing_max_price = Listing.all
     @listing_min_beds = Listing.all
     @listing_search = Listing.all
-    @listing_availible = Listing.joins(:claims).where.not(claims: {approved: true})
+    @listing_availible = []
+    Listing.all.each do |listing|
+      if listing.claims == nil
+        @listing_availible << listing
+      else
+        availible = true
+        listing.claims.each do |claim|
+          if claim.approved == true
+            availible = false
+          end
+        end
+        @listing_availible << listing if availible == true
+      end
+    end
     if params[:search] != nil && params[:search] != ''
       @listing_search = Listing.where('listings.address LIKE ?', "%#{params[:search]}%")
     end
