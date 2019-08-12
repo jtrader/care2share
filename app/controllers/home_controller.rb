@@ -32,10 +32,4 @@ class HomeController < ApplicationController
           end
           @listings = @listing_search & @listing_date_from & @listing_date_to & @listing_max_price 
       end
-  Collapse
-  
-  
-  
-  
-  
 end
