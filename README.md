@@ -6,9 +6,9 @@ https://github.com/DysonSumsion | https://github.com/jtrader | https://github.co
 
 ------
 
-#### [View Live Application](https://www.google.com "Google's Homepage")
+#### [View Live Application](https://safe-plains-67397.herokuapp.com/ "care2share Homepage")
 
-#### [Link to GitHub Repo](https://www.google.com "Google's Homepage")
+#### [Link to GitHub Repo](https://github.com/jtrader/care2share "Github Repo")
 
 ------
 
