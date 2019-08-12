@@ -1,5 +1,4 @@
 class ChargesController < ApplicationController
-
     def new
     end
 
@@ -17,11 +16,9 @@ class ChargesController < ApplicationController
             description: 'Rails Stripe customer',
             currency: 'aud',
           })
-        
         rescue Stripe::CardError => e
           flash[:error] = e.message
-          redirect_to new_charge_path
         end
+        redirect_to new_charge_path
     end
-
 end
