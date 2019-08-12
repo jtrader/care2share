@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @comments = Comment.where(recipient_id: @profile.id)
+    @comments = Comment.where(recipient_id: @profile.user.id)
   end
 
   # GET /profiles/new
