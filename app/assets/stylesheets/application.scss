@@ -40,12 +40,21 @@
     padding-top: 0.23em
 }
 
+
+
  a {
      text-decoration: none;
      color: white
  }
 .spacer {
     width: 20%;
+}
+
+.nav-pic {
+  border-radius: 50%;
+  width: 62.5px;
+  height: 62.5px;
+  object-fit: cover;
 }
 
  .nav-container {
