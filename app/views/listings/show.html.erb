@@ -87,17 +87,6 @@
   <strong>Adress</strong>
   <%= @listing.address %>
 </p>
-
-<p>
-  <strong>Latitude</strong>
-  <%= @listing.latitude %>
-</p>
-
-<p>
-  <strong>Longitude</strong>
-  <%= @listing.longitude %>
-</p>
-
 <p>
   <strong>Year:</strong>
   <%= @listing.motorhome.year %>
@@ -134,9 +123,11 @@
 
 <br>
 
-<h3>Nearby Listings</h3>
-<div class="align">
-  <% for listing in @listing.nearbys(10) %>
-  <ul> <%= link_to listing.address, listing %> (<%= listing.distance.round(2) %>) Kilometers </ul>
-  <% end %>
-</div>
+<% if @listing.nearbys(10) != nil %>
+  <h3>Nearby Listings</h3>
+  <div class="align">
+    <% for listing in @listing.nearbys(10) %>
+    <ul> <%= link_to listing.address, listing %> (<%= listing.distance.round(2) %>) Kilometers </ul>
+    <% end %>
+  </div>
+<% end %>

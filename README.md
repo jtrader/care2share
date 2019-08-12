@@ -1,17 +1,21 @@
 # care2share
 
+https://github.com/DysonSumsion | https://github.com/jtrader | https://github.com/Farts-Jousta 
+|-----------|-----------|-----------|
+| Dyson Sumsion | Jack Oswald | Nathan Pallet |
+
 ------
 
-#### [View Live Application](https://www.google.com "Google's Homepage")
+#### [View Live Application](https://safe-plains-67397.herokuapp.com/ "care2share Homepage")
 
-#### [Link to GitHub Repo](https://www.google.com "Google's Homepage")
+#### [Link to GitHub Repo](https://github.com/jtrader/care2share "Github Repo")
 
 ------
 
 ## Description
 
 ### Purpose:
-The purpose of our application is their is a number of motorhomes that are not in use, costing some in storage fees or just sitting left to rot away when the motorhomes could be making the owner additional income. Also, motorhomes are quite an expensive investment making it affordable for people who can’t afford the large initial investment to use a motorhome for their holiday. At the moment it is difficult for motorhome owners to find people wanting to rent their motorhomes and vice versa. Our marketplace connects these two parties in an efficient manner.
+The purpose of our application is there is a number of motorhomes that are not in use, costing some in storage fees or just sitting left to rot away when the motorhomes could be making the owner additional income. Also, motorhomes are quite an expensive investment making it affordable for people who can’t afford the large initial investment to use a motorhome for their holiday. At the moment it is difficult for motorhome owners to find people wanting to rent their motorhomes and vice versa. Our marketplace connects these two parties in an efficient manner.
 
 ### Functionality / features:
 * Secure Login, User Authentication and Authentication with devise
@@ -140,6 +144,7 @@ We decided to use PostgreSQL for our application due to:
 * It is a relational database
 
 ### 7. Identify and describe the production database setup (i.e. postgres instance).
+
 We initially created an local instance of a PostgreSQL database using Ruby on Rails by calling the flag -d postgresql when creating the Rails app. We then call 'rails db:create' and set up our tables and columns using migrations: eg 'rails g model user' & 'rails g migration AddNameToUser'. This database then becomes our Development and testing database.
 
 For Production, the Migrations and Schema of our Development Database are pushed to Heroku from the GitHub repository, then set up within Heroku. To do this we run the same commands to create the database and run migrations, only we put 'heroku run' before the command.
@@ -167,6 +172,7 @@ Database:
 * PostgreSQL relational database which stores information used by the application
 
 ### 9. Explain the different high-level components (abstractions) in your App.
+
 In structuring the components of our application, we followed the Ruby on Rails conventions adopting an MVC model coupled with Active Record as described below:
 
 Model - Defines the structure of the data held in our database, including attributes of objects, logic (functions) used to manipulate that data at the database level, dependencies / validations, and the relationships between different objects. Files are located in app/models directory
@@ -231,11 +237,15 @@ end
 
 
 ### 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+
 The data structure of the care2share app shares similarities to another p2p motorhome rental website by the name of camplify, where a user creates and account and is able to list their motorhome for rental on the site, Renters are then similarly be able to search through these listings based on location and dates available before being able select and rent a motorhome, on camplify the site caters for other types of items to be rented such as camper trailers and caravans but the core data structure of the site is similar to care2share.
 
 ### 12. Discuss the database relations to be implemented.
+
 The database relational design was essential in providing the solution, creating a user id key which was related to a number of tables ensured that users would only be able to access the listings they have uploaded. In addition to this a cascading relation type was used for Profiles to Motorhomes, Motorhomes to Listings and Listings to Bookings.
+
 ### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+
 We used the following active record associations:
 * Claim:
   * belongs_to :listing
@@ -267,14 +277,18 @@ We used the following active record associations:
   * has_many :comment
 ### 14. Provide your database schema design.
 ### ERD / Database Relationships
+
 ![image](https://i.imgur.com/ZgQx6ha.png)
 
 ### 15. Provide User stories for your App.
+
 Hirer: A person looking for motorhome for their next holiday hears about care2shares fantastic new website and decides to visit. The hirer is then able to search for nearby available motorhomes based on where the motorhome is based and also when it’s available. 
 The user then is able to signup for an account, once completed they are able to make a booking request on a desired motorhome. The owner then either accepts or rejects the booking request, in this case the owner accepts, the user then checks the status within my bookings to see that they have been approved and that they can then pay for motorhome via the website.
 
 Motorhome owner: As a motorhome owner I wish to rent out my motorhome because I do not use it all the time, so I visit care2share and create an account, after creating an account I set up my profile page so potential hirers can see who they are hiring from, after that’s complete, I create a motorhome I wish the rent out including a photo, now it’s time to create listings for when my motorhome is available for hire once completed my listings appear on the care2share website ready to be booked, I check my listing page to see if anybody has made a booking, somebody has so I can look at their profile and decide whether or not to accept their booking request, I choose to accept and await payment from care2share.
+
 ### 16. Provide Wireframes for your App.
+
 ![image](https://i.imgur.com/WBcI8eD.png)
 ![image](https://i.imgur.com/GofLw1Q.png)
 ![image](https://i.imgur.com/gY2BtXO.png)
@@ -283,20 +297,53 @@ Motorhome owner: As a motorhome owner I wish to rent out my motorhome because I 
 ![image](https://i.imgur.com/HEqd9bb.png)
 ![image](https://i.imgur.com/l9qvf4C.png)
 ![image](https://i.imgur.com/EEDW2fZ.png)
+
 ### 17. Describe the way tasks are allocated and tracked in your project.
+
 We used Trello to help manage what we had to complete ensuring that the group were all on the same page about what had been completed and what needed to be done.
 
 ![imgage](https://i.imgur.com/xJod15u.png)
 ![imgage](https://i.imgur.com/bZYD3qK.png)
 ![imgage](https://i.imgur.com/GKb72mk.png)
+
 ### 18. Discuss how Agile methodology is being implemented in your project.
 
+Our group kept constant contact with each other over Slack, exchanging ideas and explaining what we are each intending to implement. These can range from adding a dropdown option to the nav-bar to implementing a whole new gem to allocate and sort locations, linking information to maps and longtidudes and latidudes. After everyone is debreifed with what everyone else is working on, we can each work seperately on our own manigable sections, modifying our respective changes to account for eachothers commits and changes. This constant code, feedback, repeat loop allows us to make constant incrimental changes that build upon the last rather than conflict with it.
+
+Additionaly, the use of our Trello board allowed us to focus our attention on the most urgent and important changes that needed to be applied. This also ment we never we in a situation where we didn't have anything to work on.
+
 ### 19. Provide an overview and description of your Source control process.
+
 GitHub was used for our source control, enabling multiple users to work on the same project at the same time, when work was completed it was pushed to branches to be merged with the master on GitHub. Conflicts were resolved and sometimes work was overwritten but it was a learning process.
+
 ### 20. Provide an overview and description of your Testing process.
+
+Trial and error formed the backbone of our testing process. In some specific case, such as with Stripe and with the location gem, we designed other "practice" websites to test our specific changes. However, for the most part, our testing process revolved around making sure the changes worked once merged with the overall project. This testting process happened orgaically, as any changes we made were taken on my another team member as they implemented their changes. This ment multiple people could test new changes from a variety of places while still working on the project and making advancements in their own field.
+
+A well adopted practice was to have an open server with the website open in multiple internet browsers.
 
 ### 21. Discuss and analyse requirements related to information system security.
 
+Basic security requirements include a self contained system that cannot be accessed or changed by any of the third parties that are invloved. More importantly however, no users should be able to access anything beyond their own data and public data.
+This entails but is not limited to;
+ - Users logging in as another user.
+ - Users accessing administrator privliges.
+ - Users deleting data of other users.
+ - Users modifying the website or other user data.
+ - Users adding or deleting other users.
+ - Users accessing Stripe or collecting other users transaction details
+ - Users going to pages they arn't authorised to open
+
+To make sure these things don't happen, ruby and rails have a variety of gem and security protocols. These revolve around devise, which not only encrypts and stores user passwords and sensitive data, but encrypts specific pages to only allow specific authorised users to access. Additionaly, Stripe has it's own security protocols that prevent outside parties, including developers, from accessing sensitive data. Both of these security protocols are described in detail later on.
+
 ### 22. Discuss methods you will use to protect information and data.
 
+Stripe - Our Stripe Public keys and Secret keys are kept offline at all times, and all Stripe methodology are kept seperate from the rest of our websites code. This means that even the developers at no time have access to any private user data such as credit card details or other means of transaction. 
+
+Pundit - Any other data that the user doesn't want to be made public is protected by pundits authorisation process, only allowing certain users, which is authenticated by devise.
+
+Devise - Devise is an authourisation ruby gem that creates and seperates individual user data, protection any specific users from attacks from both within and outside the system. It offers secure password storage using bcrypt to hash salted passwords. It's ability to securely cause user lockouts, strongly encrypt data, and apply forget password functionality make it very reliable.
+
 ### 23. Research what your legal obligations are in relation to handling user data.
+
+It is our legal obligation to leave confidential user data such as credit card details strictly with stripe, not collecting or dispursing said data. It is also a legal obligation to provide a terms and conditions that details how we use any user data that the user does provide, and how we will protect any data that the user decides to keep private. The T&C will also detail how none of the user credit card data will be kept or even seen by the website and its developers, but rather passed directly into Stripe as a third party.
