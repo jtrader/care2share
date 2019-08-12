@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    redirect_to current_user.profile
   end
 
   # GET /profiles/1
@@ -25,7 +25,6 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    puts "HERE!!!"
     @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save
