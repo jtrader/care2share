@@ -1,5 +1,9 @@
 # care2share
 
+https://github.com/DysonSumsion | https://github.com/jtrader | https://github.com/Farts-Jousta 
+|-----------|-----------|-----------|
+| Dyson Sumsion | Jack Oswald | Nathan Pallet |
+
 ------
 
 #### [View Live Application](https://www.google.com "Google's Homepage")
@@ -11,7 +15,7 @@
 ## Description
 
 ### Purpose:
-The purpose of our application is their is a number of motorhomes that are not in use, costing some in storage fees or just sitting left to rot away when the motorhomes could be making the owner additional income. Also, motorhomes are quite an expensive investment making it affordable for people who can’t afford the large initial investment to use a motorhome for their holiday. At the moment it is difficult for motorhome owners to find people wanting to rent their motorhomes and vice versa. Our marketplace connects these two parties in an efficient manner.
+The purpose of our application is there is a number of motorhomes that are not in use, costing some in storage fees or just sitting left to rot away when the motorhomes could be making the owner additional income. Also, motorhomes are quite an expensive investment making it affordable for people who can’t afford the large initial investment to use a motorhome for their holiday. At the moment it is difficult for motorhome owners to find people wanting to rent their motorhomes and vice versa. Our marketplace connects these two parties in an efficient manner.
 
 ### Functionality / features:
 * Secure Login, User Authentication and Authentication with devise
