@@ -1,11 +1,15 @@
 
 <div class="align">
-  <h3>My Profile</h3>
+  <% if @profile.user == current_user %>
+    <h3>My Profile</h3>
+  <% else %>
+    <h3><%= @profile.name %></h3>
+  <% end %>
 </div>
 
 <div class="align">
   <p>
-    <%= image_tag @profile.avatar, class: 'profile'%>
+    <%= image_tag @profile.avatar, class: 'profile' %>
   </p>
 </div>
 
@@ -24,46 +28,48 @@
   </p>
 </div>
 
-<div class="align">
-  <p>
+<div>
+  <div class="section">
     <h2>Comments</h2>
-    <% if @comments == [] %>
-      No one has commented on <%= @profile.name %>! 
-    <% end %>
-    <% if @profile != current_user.profile %>
-      <h3><%= current_user.profile.name %></h3>
-      <%= render partial: 'comments/form', locals: {comment: Comment.new, profile: @profile} %>
-    <% end %>
-    <% @comments.each do |comment| %>
-      <div id="comment<%=comment.id%>">
-        <h3><%= link_to comment.writer.profile.name, comment.writer.profile %></h3>
+  </div>
+  <% if @comments == [] %>
+    No one has commented on <%= @profile.name %>! 
+  <% end %>
+  <% if @profile != current_user.profile %>
+    <%= render partial: 'comments/form', locals: {comment: Comment.new, profile: @profile} %>
+  <% end %>
+  <% @comments.each do |comment| %>
+    <div id="comment<%=comment.id%>" class="section">
+      <div>
+        <h4><%= image_tag current_user.profile.avatar, class: 'avatarsmall' %> | <%= link_to comment.writer.profile.name, comment.writer.profile %></h4>
         <%= comment.text %> | <%= comment.created_at %><br>
-
         <% if comment.writer == current_user %>
           <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-
-        <% if params[:reply].to_i == comment.id %>
-          <%= render partial: 'creplies/form', locals: {creply: Creply.new, comment_id: comment.id} %>
-        <% else %>
-          <%= button_to "Write A Reply", profile_path(@profile, anchor: "comment#{comment.id}"), method: "get", params: {reply: comment.id} %>
-        <% end %>
-
-        <% @replies = Creply.where("comment_id" => comment.id) %>
-        <% @replies.each do |reply| %>
-          <h5><%= link_to reply.writer.profile.name, reply.writer.profile %></h5>
-          <%= reply.text %> | <%= reply.created_at %><br>
-          <% if reply.writer == current_user %>
-            <%= link_to 'Delete Reply', reply, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% end %>
-
       </div>
 
-    <% end %>
-  </p>
+      <% if params[:reply].to_i == comment.id %>
+        <%= render partial: 'creplies/form', locals: {creply: Creply.new, comment_id: comment.id} %>
+      <% else %>
+        <%= button_to "Write A Reply", profile_path(@profile, anchor: "comment#{comment.id}"), method: "get", params: {reply: comment.id} %>
+      <% end %>
+
+      <% @replies = Creply.where("comment_id" => comment.id) %>
+      <% @replies.each do |reply| %>
+        <h5><%= image_tag current_user.profile.avatar, class: 'avatarsmaller' %> | <%= link_to reply.writer.profile.name, reply.writer.profile %></h5>
+        <%= reply.text %> | <%= reply.created_at %><br>
+        <% if reply.writer == current_user %>
+          <%= link_to 'Delete Reply', reply, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  <% end %>
 </div>
 
 <div class="align">
-  <%= link_to 'Edit Profile', edit_profile_path(@profile) %>
+  <% if @profile.user == current_user %>
+    <h4><%= link_to 'Edit Profile', edit_profile_path(@profile) %></h4>
+  <% end %>
 </div>

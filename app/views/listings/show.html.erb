@@ -1,6 +1,6 @@
 <div class="align">
   <h3 align="center">
-    <%= image_tag @listing.motorhome.uploaded_image, class: 'profile' %>
+    <a href="/motorhomes/<%= @listing.motorhome.id %>"><%= image_tag @listing.motorhome.uploaded_image, class: 'profile' %></a>
     <br><br>
     <%= @listing.motorhome.make %> <%= @listing.motorhome.model %>
   </h3>

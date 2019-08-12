@@ -169,20 +169,30 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1em;
+  justify-items: center
 }
 
 /* hover styles */
 .motorhome-listing {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
   position: relative;
 }
 
 .motorhome-image {
+  height: 200px;
+  width: 300px;
+  object-fit: contain;
   line-height: 0;
   overflow: hidden;
   border-radius: 25px;
 }
 
 .motorhome-image img {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
   filter: blur(0px);
   transition: filter 0.3s ease-in;
   transform: scale(1.1);
@@ -214,7 +224,7 @@ h2 {
 }
 
 .motorhome-listing:hover .motorhome-image img {
-  filter: blur(4px);
+  filter: blur(20px);
 }
 
 .max_price_field {

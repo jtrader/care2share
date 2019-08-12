@@ -1,34 +1,41 @@
 
 <div class="align">
-<p>
-<%= image_tag @motorhome.uploaded_image, class: 'profile' %>
-</p>
+  <p>
+  <%= image_tag @motorhome.uploaded_image, class: 'profile' %>
+  </p>
 </div>
+
 <div class="align">
-<p>
-  <strong>Owner:</strong>
-  <%= image_tag @motorhome.user.profile.avatar, class: 'avatar' %><%= link_to @motorhome.user.profile.name, @motorhome.user.profile %>
-</p>
-<p>
-  <strong>Make:</strong>
-  <%= @motorhome.make %>
-</p>
-<p>
-  <strong>Model:</strong>
-  <%= @motorhome.model %>
-</p>
-<p>
-  <strong>Year:</strong>
-  <%= @motorhome.year %>
-</p>
-<p>
-  <strong>Length:</strong>
-  <%= @motorhome.length %> feet
-</p>
-<p>
-  <strong>Beds:</strong>
-  <%= @motorhome.beds %>
-</p>
+  <h4><%= link_to 'Make Listing', new_listing_path(motorhome_id: @motorhome.id) %></h4>
 </div>
-<%= link_to 'Edit', edit_motorhome_path(@motorhome) %> |
-<%= link_to 'Back', motorhomes_path %>
+
+<div class="align">
+  <p>
+    <strong>Owner:</strong>
+    <%= image_tag @motorhome.user.profile.avatar, class: 'avatar' %><%= link_to @motorhome.user.profile.name, @motorhome.user.profile %>
+  </p>
+  <p>
+    <strong>Make:</strong>
+    <%= @motorhome.make %>
+  </p>
+  <p>
+    <strong>Model:</strong>
+    <%= @motorhome.model %>
+  </p>
+  <p>
+    <strong>Year:</strong>
+    <%= @motorhome.year %>
+  </p>
+  <p>
+    <strong>Length:</strong>
+    <%= @motorhome.length %> feet
+  </p>
+  <p>
+    <strong>Beds:</strong>
+    <%= @motorhome.beds %>
+  </p>
+</div>
+
+<div class="align">
+<%= link_to 'Edit Motorhome', edit_motorhome_path(@motorhome) %>
+</div>

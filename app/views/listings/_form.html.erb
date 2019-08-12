@@ -43,11 +43,26 @@
     <%= form.number_field :price %>
   </div>
 
-  <div class="field">
-    <%= form.label :motorhome_id %>
-    <% motorhomes_array = Motorhome.where(user_id: current_user.id).map { |motorhome| [motorhome.make, motorhome.id] } %>
-    <%= form.select :motorhome_id, options_for_select(motorhomes_array) %>
-  </div>
+  <% if motorhome_id == nil %>
+
+    <div class="field">
+      <%= form.label :motorhome_id %>
+      <% motorhomes_array = Motorhome.where(user_id: current_user.id).map { |motorhome| [motorhome.make, motorhome.id] } %>
+      <%= form.select :motorhome_id, options_for_select(motorhomes_array) %>
+    </div>
+  
+  <% else %>
+
+    <div class="field">
+      <%= form.hidden_field :motorhome_id, value: motorhome_id %>
+    </div>
+
+    <% motorhome = Motorhome.find(motorhome_id)%>
+    <p>
+      <%= image_tag motorhome.uploaded_image, class: 'avatar' %>
+    </p>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
