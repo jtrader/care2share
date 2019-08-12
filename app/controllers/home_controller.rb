@@ -17,9 +17,7 @@ class HomeController < ApplicationController
       else
         availible = true
         listing.claims.each do |claim|
-          if claim.approved == true
-            availible = false
-          end
+          availible = false if claim.approved == true
         end
         @listing_availible << listing if availible == true
       end
