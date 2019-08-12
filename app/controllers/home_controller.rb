@@ -26,15 +26,12 @@ class HomeController < ApplicationController
           @listing_min_beds = Listing.joins(:motorhome).where("motorhomes.beds >= '#{params[:min_beds]}'")
           @listing_date_from = Listing.where("start_time <= '#{Date.parse(params[:start_time])}'")
         end
-        if params[:end_time] != nil && params[:end_time] != ''
-          @listing_date_to = Listing.where("end_time >= '#{Date.parse(params[:end_time])}'")
-        end
         if params[:max_price] != nil && params[:max_price] != ''
           @listing_max_price = Listing.where("price < '#{params[:max_price]}'")
         end
         if params[:min_beds] != nil && params[:min_beds] != ''
           @listing_min_beds = Listing.joins(:motorhome).where("motorhomes.beds >= '#{params[:min_beds]}'")
         end
-        @listings = @listing_date_from & @listing_date_to & @listing_max_price & @listing_min_beds & @listing_search
+        @listings = @listing_search & @listing_date_from & @listing_date_to & @listing_max_price & @listing_min_beds
     end
 end
