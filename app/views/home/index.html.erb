@@ -2,10 +2,10 @@
 <div class="align">
   <%= form_tag({}, {:method => :get}) do %>
     <p>
-      <%= text_field_tag :search, params[:search], :onchange => "this.form.submit();", :placeholder => "Location"%>
-      <%= date_field_tag :start_time, "#{params[:start_time]}", :onchange => "this.form.submit();" , :placeholder => "Date from", :value => Time.now.strftime('%Y-%m-%d') %>
-      <%= date_field_tag :end_time, "#{params[:end_time]}", :onchange => "this.form.submit();", :placeholder => "Date to" %>
-      <%= number_field_tag :max_price, "#{params[:max_price]}", :onchange => "this.form.submit();", :placeholder => "Max Price", min: 100, max: 5000, step: 100 %>
+      <%= text_field_tag :search, params[:search], onchange: "this.form.submit();", placeholder: "Location"%>
+      <%= date_field_tag :start_time, "#{params[:start_time]}", onchange: "this.form.submit();" , placeholder: "Date from" %>
+      <%= date_field_tag :end_time, "#{params[:end_time]}", onchange: "this.form.submit();", placeholder: "Date to" %>
+      <%= number_field_tag :max_price, "#{params[:max_price]}", onchange: "this.form.submit();", placeholder: "Max Price", min: 100, max: 5000, step: 100, class: 'max_price_field' %>
 
     </p>
   <% end %>
