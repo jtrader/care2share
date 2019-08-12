@@ -3,4 +3,5 @@ class Listing < ApplicationRecord
   after_validation :geocode, :if => :address_changed?
   belongs_to :motorhome
   has_one :review
+  has_many :claims
 end
