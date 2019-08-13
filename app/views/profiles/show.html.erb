@@ -41,7 +41,7 @@
   <% @comments.each do |comment| %>
     <div id="comment<%=comment.id%>" class="section">
       <div>
-        <h4><%= image_tag current_user.profile.avatar, class: 'avatarsmall' %> | <%= link_to comment.writer.profile.name, comment.writer.profile %></h4>
+        <h4><%= image_tag comment.writer.profile.avatar, class: 'avatarsmall' %> | <%= link_to comment.writer.profile.name, comment.writer.profile %></h4>
         <%= comment.text %> | <%= comment.created_at %><br>
         <% if comment.writer == current_user %>
           <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -56,7 +56,7 @@
 
       <% @replies = Creply.where("comment_id" => comment.id) %>
       <% @replies.each do |reply| %>
-        <h5><%= image_tag current_user.profile.avatar, class: 'avatarsmaller' %> | <%= link_to reply.writer.profile.name, reply.writer.profile %></h5>
+        <h5><%= image_tag comment.writer.profile.avatar, class: 'avatarsmaller' %> | <%= link_to reply.writer.profile.name, reply.writer.profile %></h5>
         <%= reply.text %> | <%= reply.created_at %><br>
         <% if reply.writer == current_user %>
           <%= link_to 'Delete Reply', reply, method: :delete, data: { confirm: 'Are you sure?' } %>
